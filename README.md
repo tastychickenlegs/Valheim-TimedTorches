@@ -1,9 +1,5 @@
 ﻿# Valheim-TimedTorches
-Codebase for a deprecated Valheim mod I created which can be found here
-
-Feel free to use for anything you wish.
-
-If you publish a mod based on this, let me know and I can add a link to it from the TimedTorches mod page.
+Original Mod by Gurrling and found here [TimedTorches Original](https://www.nexusmods.com/valheim/mods/962)
 
 ## Fixed for Valheim Frost Cave Update
 Original Mod by Gurrlin all credit goes back to them for creating the mod
