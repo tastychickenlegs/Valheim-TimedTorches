@@ -7,10 +7,14 @@ using UnityEngine;
 
 namespace TimedTorches
 {
-    [BepInPlugin("gurrlin.TimedTorches", "Timed Torches", "0.5.1")]
+    [BepInPlugin("gurrlin.TimedTorches", "Timed Torches", "0.6.0")]
     [BepInProcess("valheim.exe")]
     public class ValheimMod : BaseUnityPlugin
     {
+        /*
+         * Special thank you to Gurrlin for the original idea and mod. I've updated the code with fixes for the Valheim Frozen Caves update
+         * Gurrlin is credited in the AssemblyInfo.cs file, and here. All credits go to Gurrlin. 
+         */
         private readonly Harmony harmony = new Harmony("gurrlin.TimedTorches");
 
         private static ConfigEntry<int> _configNexusID;
@@ -28,6 +32,8 @@ namespace TimedTorches
             "piece_groundtorch_wood",
             "piece_groundtorch",
             "piece_groundtorch_green",
+            "piece_walltorch",
+            "piece_brazierceiling01",
         };
 
         private static string[] fuelDurationSources = new string[]
@@ -35,6 +41,8 @@ namespace TimedTorches
             "piece_groundtorch_wood",
             "piece_groundtorch",
             "piece_groundtorch_green",
+            "piece_walltorch",
+            "piece_brazierceiling01",
         };
 
         void Awake()
@@ -126,11 +134,14 @@ namespace TimedTorches
                 if(affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)))
                 {
                     // Should never burn if under water
-                    float waterLevel = WaterVolume.GetWaterLevel(___m_enabledObject.transform.position);
-                    if(___m_enabledObject.transform.position.y < waterLevel)
-                    {
-                        return;
-                    }
+                    //commenented out to fix for Valheim Frost Caves
+                    // TastyChickenLegs 03/12/2022
+
+                    //float waterLevel = WaterVolume.GetWaterLevel(___m_enabledObject.transform.position);
+                    //if(___m_enabledObject.transform.position.y < waterLevel)
+                    //{
+                    //    return;
+                    //}
 
                     // Calculate if the torch should currently be lit
                     bool shouldBeLit = false;
