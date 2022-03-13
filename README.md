@@ -1,16 +1,13 @@
 ﻿# Valheim-TimedTorches
-Codebase for a deprecated Valheim mod I created which can be found here
-
-Feel free to use for anything you wish.
-
-If you publish a mod based on this, let me know and I can add a link to it from the TimedTorches mod page.
+Original Mod by Gurrling and found here [TimedTorches Original](https://www.nexusmods.com/valheim/mods/962)
 
 ## Fixed for Valheim Frost Cave Update
 Original Mod by Gurrlin all credit goes back to them for creating the mod
-Updated for Valheim Frost Caves by TastyChickenLegs
 
-This has been fixed for the Valheim Frost Cave Update
-This is not my mod and all credit goes back to the original author Gurrlin
+This is testing right now.  Mod dll can be found here [TimeTorches Fixed](https://github.com/tastychickenlegs/Valheim-TimedTorches/blob/main/TimedTorches/bin/Release/TimedTorches.dll)
+
+This has been fixed for the Valheim Frost Cave Update  
+### This is not my mod and all credit goes back to the original author Gurrlin
 I will do my best to answer questions and fix issues.
 
 ### About the Mod
@@ -26,46 +23,33 @@ and then turn off when it rises in the morning without constantly having to refi
 
 ### Configuration
 
-OnTime - Time of day when torches should turn ON. (The default is set to 4.30pm in-game time)
-OffTime - Time of day when torches should turn OFF. (The default is set to 6.30am in-game time)
-AlwaysOnInDarkBiomes - If true, objects listed in AffectedFireplaceSources will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm.
-AffectedFireplaceSources - List of objects to be affected by the mod (see below for list of supported objects). By default only torches are added.
-AllowAddingFuel - If true, enable adding fuel to torches which will make them burn during daytime as well.
-FuelDurationMultiplier - Multiplies the duration of each fuel added to objects listed in the FuelDurationSources.
-FuelDurationSources - See FuelDurationMultiplier.
+- OnTime - Time of day when torches should turn ON. (The default is set to 4.30pm in-game time)
+- OffTime - Time of day when torches should turn OFF. (The default is set to 6.30am in-game time)
+- AlwaysOnInDarkBiomes - If true, objects listed in AffectedFireplaceSources will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm.
+- AffectedFireplaceSources - List of objects to be affected by the mod (see below for list of supported objects). By default only torches are added.
+- AllowAddingFuel - If true, enable adding fuel to torches which will make them burn during daytime as well.
+- FuelDurationMultiplier - Multiplies the duration of each fuel added to objects listed in the FuelDurationSources.
+- FuelDurationSources - See FuelDurationMultiplier.
 
 Note: If OnTime and OffTime is set to the same value, for example 0 and 0 the fireplaces listed in AffectedFireplaceSources will burn 24/7.
 
 The config file is located in "<GameDirectory>\Bepinex\config" (You need to start the game with the mod installed for the config file to be created).
 
 ### List of supported objects:
-piece_groundtorch
-piece_groundtorch_wood
-piece_groundtorch_green
-piece_brazierceiling01
-piece_walltorch
-heart
-bonfire
-fire_pit
+  
+piece_groundtorch  
+piece_groundtorch_wood  
+piece_groundtorch_green  
+piece_brazierceiling01  
+piece_walltorch  
+hearth  
+bonfire  
+fire_pit  
 piece_jackoturnip
 
-### Other
 
-
-How to find the perfect timer settings for your needs
-
-The default values are set to work for out base that doesn't get really early sun and not the last rays of the sunset. However, if your base is in a different location you might want to tweak the on and off times.
-This is how you go about finding a timing that's right for you!
-
-Enable the console following the instructions here.﻿
-Create a new world to test on (if you really know what you're doing feel free
-to use it in your existing world, although making a safety copy of it
-beforehand is always recommended.)
-When in-game, press f5 to bring up the console. Enter devcommands in the console and you should get a message telling you that it worked.
-In the console enter tod followed by a number between 0 and 1, for example, 0.5. This will set the Time Of Day to your given number. Repeat this until you find a number for when you want the timer to turn on and one for when it turns off and apply these to the config file. (to reset to the default time enter tod -1)
-
-Installation (manual)
-Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"
+### Installation (manual)  
+Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"  
 Start the game.
 
 ### Version Information
