@@ -9,6 +9,7 @@ This is testing right now.  Mod dll can be found here [TimeTorches Fixed](https:
 This has been fixed for the Valheim Frost Cave Update  
 ### This is not my mod and all credit goes back to the original author Gurrlin
 I will do my best to answer questions and fix issues.
+Client side only mode.
 
 ### About the Mod
 Tired of having to add resin to the tens or hundreds of torches lighting up your viking village? 
