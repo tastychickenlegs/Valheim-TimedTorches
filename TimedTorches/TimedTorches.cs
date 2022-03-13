@@ -58,7 +58,7 @@ namespace TimedTorches
                 _configAlwaysOnInDarkBiomes = Config.Bind<bool>("General", "AlwaysOnInDarkBiomes", defaultValue: true, "If true, torches will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm");
                 _configAffectedSources = Config.Bind<string>("General", "AffectedFireplaceSources", string.Join(",", affectedSources), "List of 'Fireplace' sources to be affected by the mod, including objects such as campfires and torches.");
 
-                _configAllowAddingFuel = Config.Bind<bool>("Fuel", "AllowAddingFuel", defaultValue: true, "If true, enable adding fuel to torches which will make them burn during daytime as well. (Fuel will still be used during nighttime)");
+                _configAllowAddingFuel = Config.Bind<bool>("Fuel", "AllowAddingFuel", defaultValue: false, "If true, enable adding fuel to torches which will make them burn during daytime as well. (Fuel will still be used during nighttime)");
                 _configFuelDurationMultiplier = Config.Bind<float>("Fuel", "FuelDurationMultiplier", 1f, "Multiplies the duration of each fuel added to objects listed in the 'FuelDurationSources'. A value of 2 would mean each added fuel burns twice as long)");
                 _configFuelDurationSources = Config.Bind<string>("Fuel", "FuelDurationSources", string.Join(",", fuelDurationSources), "List of 'Fireplace' sources to be affected by the 'FuelDurationMultiplier'.");
 

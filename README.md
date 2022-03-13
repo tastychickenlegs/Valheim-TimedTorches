@@ -69,6 +69,9 @@ Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"
 Start the game.
 
 ### Version Information
+0.6.1 - By TastyChickenLegs
+
+-set default config for AllowAddingFuel to false so torches use the schedule instead of always on by default.
 
 0.6.0 - By TastyChickenLegs
 
