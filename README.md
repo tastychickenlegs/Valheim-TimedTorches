@@ -4,7 +4,7 @@ Original Mod by Gurrling and found here [TimedTorches Original](https://www.nexu
 ## Fixed for Valheim Frost Cave Update
 Original Mod by Gurrlin all credit goes back to them for creating the mod
 
-This is testing right now.  Mod dll can be found here [TimeTorches Fixed](https://github.com/tastychickenlegs/Valheim-TimedTorches/blob/main/TimedTorches/bin/Release/TimedTorches.dll)
+This is testing right now.  Mod dll can be found here [TimeTorches Fixed](https://github.com/tastychickenlegs/Valheim-TimedTorches/releases)
 
 This has been fixed for the Valheim Frost Cave Update  
 ### This is not my mod and all credit goes back to the original author Gurrlin
