@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace TimedTorches
 {
-    [BepInPlugin("gurrlin.TimedTorches", "Timed Torches", "0.6.0")]
+    [BepInPlugin("gurrlin.TimedTorches", "Timed Torches", "0.6.1")]
     [BepInProcess("valheim.exe")]
     public class ValheimMod : BaseUnityPlugin
     {
@@ -51,7 +51,7 @@ namespace TimedTorches
 
             if(_configEnabled.Value)
             {
-                _configNexusID = Config.Bind<int>("General", "NexusID", 962, "Nexus mod ID for 'Nexus Update Check' mod compatibility.");
+                // _configNexusID = Config.Bind<int>("General", "NexusID", 962, "Nexus mod ID for 'Nexus Update Check' mod compatibility.");
 
                 _configOnTime = Config.Bind<float>("General", "OnTime", 0.6875f, "Time of day when torches should turn ON. 0.6875f = 4.30pm (0f and 1f is midnight, 0.5f is noon. If onTime == offTime affected fireplaces will burn 24/7)");
                 _configOffTime = Config.Bind<float>("General", "OffTime", 0.27f, "Time of day when torches should turn OFF. 0.27f = 6.30am (0f and 1f is midnight, 0.5f is noon. If onTime == offTime affected fireplaces will burn 24/7)");

@@ -48,6 +48,23 @@ bonfire
 fire_pit  
 piece_jackoturnip
 
+### Other
+
+How to find the perfect timer settings for your needs  
+
+The default values are set to work for out base that doesn't get really early sun and not the last rays of the sunset. However, if your base is in a different location you might want to tweak the on and off times.
+This is how you go about finding a timing that's right for you!  
+
+Enable the console following the instructions here.﻿  
+Create a new world to test on (if you really know what you're doing feel free  
+to use it in your existing world, although making a safety copy of it beforehand is always recommended.)  
+- When in-game, press f5 to bring up the console.
+- Enter devcommands in the console and you should get a message telling you that it worked.
+- In the console enter tod followed by a number between 0 and 1, for example, 0.5. This will set the Time Of Day to your given number. 
+- Repeat this until you find a number for when you want the timer to turn on and one for when it turns off and apply these to the config file.
+- (to reset to the default time enter tod -1)
+
+
 
 ### Installation (manual)  
 Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"  

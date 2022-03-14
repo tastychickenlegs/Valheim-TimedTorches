@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TimedTorches",
+    "\\TimedTorches\\obj\\Debug",
+    "\\TimedTorches\\obj\\Release"
   ],
-  "SelectedNode": "\\TimedTorches.sln",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
