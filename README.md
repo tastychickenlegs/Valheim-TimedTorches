@@ -71,9 +71,16 @@ Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"
 Start the game.
 
 ### Version Information
+
+0.6.2  
+
+- Gereral release
+- Removed Nexus ID
+- Added piece_groundtorch_blue to generate in the config file.
+
 0.6.1 - By TastyChickenLegs
 
--set default config for AllowAddingFuel to false so torches use the schedule instead of always on by default.
+- set default  for AllowAddingFuel to false in config file.
 
 0.6.0 - By TastyChickenLegs
 

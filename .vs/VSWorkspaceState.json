@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\TimedTorches",
-    "\\TimedTorches\\obj\\Debug",
-    "\\TimedTorches\\obj\\Release"
+    "\\TimedTorches\\Properties"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\TimedTorches\\TimedTorches.cs",
   "PreviewInSolutionExplorer": false
 }

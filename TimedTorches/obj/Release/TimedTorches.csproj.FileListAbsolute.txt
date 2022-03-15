@@ -11,3 +11,4 @@ E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches
 E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches\obj\Release\TimedTorches.csproj.CopyComplete
 E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches\obj\Release\TimedTorches.dll
 E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches\obj\Release\TimedTorches.pdb
+E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches\obj\Release\TimedTorches.csproj.AssemblyReference.cache

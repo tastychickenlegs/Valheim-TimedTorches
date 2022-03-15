@@ -18,3 +18,7 @@ C:\repos\ValheimTimedTorches\TimedTorches\TimedTorches\obj\Debug\TimedTorches.cs
 C:\repos\ValheimTimedTorches\TimedTorches\TimedTorches\obj\Debug\TimedTorches.csproj.CoreCompileInputs.cache
 C:\repos\ValheimTimedTorches\TimedTorches\TimedTorches\obj\Debug\TimedTorches.csproj.CopyComplete
 C:\repos\ValheimTimedTorches\TimedTorches\TimedTorches\obj\Debug\TimedTorches.dll
+E:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\scripts\TimedTorches.dll
+E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches\obj\Debug\TimedTorches.csproj.CoreCompileInputs.cache
+E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches\obj\Debug\TimedTorches.csproj.CopyComplete
+E:\visual studio\source\repos\tastychickenlegs\Valheim-TimedTorches\TimedTorches\obj\Debug\TimedTorches.dll
