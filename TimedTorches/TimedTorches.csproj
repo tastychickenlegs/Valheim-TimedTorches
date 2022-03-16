@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Valheim\BepInEx\scripts\</OutputPath>
+	  <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,27 +32,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\Libs\0Harmony.dll</HintPath>
+      <HintPath>Libs\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="assembly_guiutils">
-      <HintPath>..\Libs\assembly_guiutils.dll</HintPath>
+      <HintPath>Libs\assembly_guiutils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_utils">
-      <HintPath>..\Libs\assembly_utils.dll</HintPath>
+      <HintPath>Libs\assembly_utils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_valheim">
-      <HintPath>..\Libs\assembly_valheim.dll</HintPath>
+      <HintPath>Libs\assembly_valheim.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\Libs\BepInEx.dll</HintPath>
+      <HintPath>Libs\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
-      <HintPath>..\Libs\UnityEngine.dll</HintPath>
+      <HintPath>Libs\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>Libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
