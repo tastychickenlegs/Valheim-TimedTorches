@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace TimedTorches
 {
-    [BepInPlugin("tastychickenlegs.TimedTorches_Fixed", "Timed Torches Fixed", "0.6.2")]
+    [BepInPlugin("tastychickenlegs.TimedTorches_Fixed", "Timed Torches Fixed", "0.6.1")]
     [BepInProcess("valheim.exe")]
     public class ValheimMod : BaseUnityPlugin
     {
