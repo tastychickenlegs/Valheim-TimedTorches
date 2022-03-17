@@ -10,11 +10,11 @@ using System.Runtime.InteropServices;
 //Gurrlin is credited in the AssemblyInfo.cs file, and here. All credits go to Gurrlin. 
        
 
-[assembly: AssemblyTitle("TimedTorches")]
+[assembly: AssemblyTitle("TimedTorches_Fix")]
 [assembly: AssemblyDescription("Fixed for Frost Caves Release")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gurrlin/TastyChickenLegs")]
-[assembly: AssemblyProduct("TimedTorches")]
+[assembly: AssemblyProduct("TimedTorches_Fix")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

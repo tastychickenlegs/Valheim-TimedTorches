@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace TimedTorches
 {
-    [BepInPlugin("tastychickenlegs.TimedTorches", "Timed Torches", "0.6.2")]
+    [BepInPlugin("tastychickenlegs.TimedTorches_Fixed", "Timed Torches Fixed", "0.6.2")]
     [BepInProcess("valheim.exe")]
     public class ValheimMod : BaseUnityPlugin
     {
@@ -15,7 +15,7 @@ namespace TimedTorches
          * Special thank you to Gurrlin for the original idea and mod. I've updated the code with fixes for the Valheim Frozen Caves update
          * Gurrlin is credited in the AssemblyInfo.cs file, and here. All credits go to Gurrlin. 
          */
-        private readonly Harmony harmony = new Harmony("tastychickenlegs.TimedTorches");
+        private readonly Harmony harmony = new Harmony("tastychickenlegs.TimedTorches_Fixed");
 
         //private static ConfigEntry<int> _configNexusID;  -Not using this feature
         private static ConfigEntry<bool> _configEnabled;

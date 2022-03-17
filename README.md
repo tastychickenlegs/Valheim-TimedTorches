@@ -1,4 +1,4 @@
-﻿# Valheim-TimedTorches
+﻿# Valheim-TimedTorches_Fix_
 Original Mod by Gurrling and found here [TimedTorches Original](https://www.nexusmods.com/valheim/mods/962)
 
 ## Fixed for Valheim Frost Cave Update
@@ -78,11 +78,11 @@ Start the game.
 - Removed Nexus ID
 - Added piece_groundtorch_blue to generate in the config file.
 
-0.6.1 - By TastyChickenLegs
+0.6.1 - 
 
 - set default  for AllowAddingFuel to false in config file.
 
-0.6.0 - By TastyChickenLegs
+0.6.0 - 
 
 - Removed reference to Water Volume
 - Updated version with credits back to Gurrlin
