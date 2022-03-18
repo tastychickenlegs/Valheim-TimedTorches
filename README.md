@@ -1,5 +1,5 @@
 ﻿# Valheim-TimedTorches_Fix
-Original Mod by Gurrling and found here [TimedTorches Original](https://www.nexusmods.com/valheim/mods/962)
+Original Mod by Gurrlin and found here [TimedTorches Original](https://www.nexusmods.com/valheim/mods/962)
 I received Permission from Gurrlin to fix, modify and repost this mod
 
 ## Fixed for Valheim Frost Cave Update
