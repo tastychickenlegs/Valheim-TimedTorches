@@ -5,8 +5,6 @@ I received Permission from Gurrlin to fix, modify and repost this mod
 ## Fixed for Valheim Frost Cave Update
 Original Mod by Gurrlin all credit goes back to them for creating the mod
 
-Mod dll can be found here [TimeTorches Fixed](https://github.com/tastychickenlegs/Valheim-TimedTorches/releases)
-
 This has been fixed for the Valheim Frost Cave Update  
 ### This is not my mod and all credit goes back to the original author Gurrlin
 I will do my best to answer questions and fix issues.
