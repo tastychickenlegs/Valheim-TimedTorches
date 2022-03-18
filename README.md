@@ -47,7 +47,10 @@ piece_walltorch
 hearth  
 bonfire  
 fire_pit  
-piece_jackoturnip
+piece_jackoturnip  
+piece_brazierfloor01 - (New with Frost Caves)
+
+- You should be able to add custom items to this mod in the config.  I have not tested it, but see no reason why it wouldnt work.
 
 ### Other
 
@@ -75,9 +78,10 @@ Start the game.
 
 0.6.1 - By TastyChickenLegs
  
-- Gereral release
+- Gereral re-release
 - Removed Nexus ID
-- Added piece_groundtorch_blue to generate in the config file.
+- Added Blue Torch in the config file.
+- Added Standing Brazier for Frost Caves in the config file.
 - set default  for AllowAddingFuel to false in config file.
 - Removed reference to Water Volume
 - Updated version with credits back to Gurrlin

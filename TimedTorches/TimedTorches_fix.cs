@@ -35,6 +35,7 @@ namespace TimedTorches
             "piece_groundtorch_blue",
             "piece_walltorch",
             "piece_brazierceiling01",
+            "piece_brazierfloor01",
         };
 
         private static string[] fuelDurationSources = new string[]
@@ -45,6 +46,7 @@ namespace TimedTorches
             "piece_groundtorch_blue",
             "piece_walltorch",
             "piece_brazierceiling01",
+            "piece_brazierfloor01",
         };
 
         void Awake()
