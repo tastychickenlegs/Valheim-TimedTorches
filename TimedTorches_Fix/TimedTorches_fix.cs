@@ -17,7 +17,7 @@ namespace TimedTorches
          */
         private readonly Harmony harmony = new Harmony("tastychickenlegs.TimedTorches_Fixed");
 
-        //private static ConfigEntry<int> _configNexusID;  -Not using this feature
+        private static ConfigEntry<int> _configNexusID;
         private static ConfigEntry<bool> _configEnabled;
         private static ConfigEntry<float> _configOnTime;
         private static ConfigEntry<float> _configOffTime;
@@ -55,7 +55,7 @@ namespace TimedTorches
 
             if(_configEnabled.Value)
             {
-                // _configNexusID = Config.Bind<int>("General", "NexusID", 962, "Nexus mod ID for 'Nexus Update Check' mod compatibility.");
+                _configNexusID = Config.Bind<int>("General", "NexusID", 1813, "Nexus mod ID for 'Nexus Update Check' mod compatibility.");
 
                 _configOnTime = Config.Bind<float>("General", "OnTime", 0.6875f, "Time of day when torches should turn ON. 0.6875f = 4.30pm (0f and 1f is midnight, 0.5f is noon. If onTime == offTime affected fireplaces will burn 24/7)");
                 _configOffTime = Config.Bind<float>("General", "OffTime", 0.27f, "Time of day when torches should turn OFF. 0.27f = 6.30am (0f and 1f is midnight, 0.5f is noon. If onTime == offTime affected fireplaces will burn 24/7)");
