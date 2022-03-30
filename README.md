@@ -23,13 +23,17 @@ and then turn off when it rises in the morning without constantly having to refi
 
 ### Configuration
 
+<b>If you leave the settings alone, torches will turn on at 6:30am and turn off at 4:30pm and require NO fuel.</b>
+
 - OnTime - Time of day when torches should turn ON. (The default is set to 4.30pm in-game time)
 - OffTime - Time of day when torches should turn OFF. (The default is set to 6.30am in-game time)
-- AlwaysOnInDarkBiomes - If true, objects listed in AffectedFireplaceSources will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm.
+- AlwaysOnInDarkBiomes - (Default True) If true, objects listed in AffectedFireplaceSources will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm.
 - AffectedFireplaceSources - List of objects to be affected by the mod (see below for list of supported objects). By default only torches are added.
-- AllowAddingFuel - If true, enable adding fuel to torches which will make them burn during daytime as well.
+- AllowAddingFuelNoTimer - (Default False) If true, fuel can be added but not use timers. (Basically vanilla torches) but with the ability to use fuelDurationMultiplier to extend the fuel burning time.
+- AllowAddingFuelUseTimer - (Default False) If true, fuel can be added and sources will use the timer settings.  If false no fuel is needed to burn torches
 - FuelDurationMultiplier - Multiplies the duration of each fuel added to objects listed in the FuelDurationSources.
-- FuelDurationSources - See FuelDurationMultiplier.
+- FuelDurationSources - Items configured to use the FuelDurationMultiplier settings.
+ 
 
 Note: If OnTime and OffTime is set to the same value, for example 0 and 0 the fireplaces listed in AffectedFireplaceSources will burn 24/7.
 
@@ -73,6 +77,15 @@ Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"
 Start the game.
 
 ### Version Information
+
+In the planning stages: 
+
+- Ability to have all torches to include moded assets on timers without having to add item_ids to the config file.
+
+0.6.2
+
+- Added the ability for timed sources to require fuel usage.  Enabled in config as AllowAddingFuelUseTimer
+- Chaged the AllowAddingFuel setting to AllowAddingFuelNoTimer for clarity.
 
 0.6.1 - By TastyChickenLegs
  

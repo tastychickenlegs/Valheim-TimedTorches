@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Linq;
 using HarmonyLib;
 using BepInEx;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace TimedTorches
 {
-    [BepInPlugin("tastychickenlegs.TimedTorches_Fixed", "Timed Torches Fixed", "0.6.1")]
+    [BepInPlugin("tastychickenlegs.TimedTorches_Fixed", "Timed Torches Fixed", "0.6.2")]
     [BepInProcess("valheim.exe")]
     public class ValheimMod : BaseUnityPlugin
     {
@@ -24,6 +25,7 @@ namespace TimedTorches
         private static ConfigEntry<bool> _configAlwaysOnInDarkBiomes;
         private static ConfigEntry<string> _configAffectedSources;
         private static ConfigEntry<bool> _configAllowAddingFuel;
+        private static ConfigEntry<bool> _configAllowAddingFuelUseTimer;
         private static ConfigEntry<float> _configFuelDurationMultiplier;
         private static ConfigEntry<string> _configFuelDurationSources;
 
@@ -51,7 +53,7 @@ namespace TimedTorches
 
         void Awake()
         {
-            _configEnabled = Config.Bind<bool>("General", "Enabled", defaultValue: true, "Sets the mod to be enabled or not.");
+            _configEnabled = Config.Bind<bool>("General", "Mod Enabled", defaultValue: true, "Sets the mod to be enabled or not.");
 
             if(_configEnabled.Value)
             {
@@ -62,10 +64,13 @@ namespace TimedTorches
                 _configAlwaysOnInDarkBiomes = Config.Bind<bool>("General", "AlwaysOnInDarkBiomes", defaultValue: true, "If true, torches will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm");
                 _configAffectedSources = Config.Bind<string>("General", "AffectedFireplaceSources", string.Join(",", affectedSources), "List of 'Fireplace' sources to be affected by the mod, including objects such as campfires and torches.");
 
-                _configAllowAddingFuel = Config.Bind<bool>("Fuel", "AllowAddingFuel", defaultValue: false, "If true, enable adding fuel to torches which will make them burn during daytime as well. (Fuel will still be used during nighttime)");
+                _configAllowAddingFuel = Config.Bind<bool>("Fuel", "AllowAddingFuelNoTimer", defaultValue: false, "If true, will simply keep the configured sources on all the time and require fuel.  Can use FuelDurationSources to extend fuel duration)");
+                //Added AllowAddingFuelUseTimer to the config V.0.6.2.0 TCL
+                _configAllowAddingFuelUseTimer = Config.Bind<bool>("Fuel", "AllowAddingFuelUseTimer", defaultValue: true, "If True, torches will allow adding fuel and use the timer settings.  Fuel can be extended using FuelDurationSources");
                 _configFuelDurationMultiplier = Config.Bind<float>("Fuel", "FuelDurationMultiplier", 1f, "Multiplies the duration of each fuel added to objects listed in the 'FuelDurationSources'. A value of 2 would mean each added fuel burns twice as long)");
                 _configFuelDurationSources = Config.Bind<string>("Fuel", "FuelDurationSources", string.Join(",", fuelDurationSources), "List of 'Fireplace' sources to be affected by the 'FuelDurationMultiplier'.");
-
+                
+                
                 affectedSources = _configAffectedSources.Value.Split(',');
                 fuelDurationSources = _configFuelDurationSources.Value.Split(',');
 
@@ -77,42 +82,44 @@ namespace TimedTorches
         {
             harmony.UnpatchSelf();
         }
+        //Not needed anymore
 
-        [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Awake))]
-        class FireplaceAwakePre_Patch
+        //[HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Awake))]
+        //class FireplaceAwakePre_Patch
+        //{
+
+        //    static void Prefix(Fireplace __instance, ref float ___m_startFuel)
+        //    {
+        //        if (affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)))
+        //        {
+        //            ___m_startFuel = 0;
+        //        }
+
+        //    }
+
+            [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Awake))]
+        class FireplaceAwakePost_Patch
         {
-            static void Prefix(Fireplace __instance, ref float ___m_startFuel)
+            static void Postfix(Fireplace __instance, ref float ___m_secPerFuel)
             {
-                if(affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)))
+                if (fuelDurationSources.Contains(Utils.GetPrefabName(__instance.gameObject)))
                 {
-                    ___m_startFuel = 0;
+                    ___m_secPerFuel *= _configFuelDurationMultiplier.Value;
                 }
             }
         }
 
-        [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Awake))]
-		class FireplaceAwakePost_Patch
-		{
-            static void Postfix(Fireplace __instance, ref float ___m_secPerFuel)
-			{
-                if(fuelDurationSources.Contains(Utils.GetPrefabName(__instance.gameObject)))
-                {
-                    ___m_secPerFuel *= _configFuelDurationMultiplier.Value;
-                }
-			}
-		}
 
-        
         [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.GetHoverText))]
         class FireplaceGetHoverText_Patch
         {
             static void Postfix(Fireplace __instance, ref string __result, ref ZNetView ___m_nview, ref string ___m_name)
             {
-                
-                if(affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) && !_configAllowAddingFuel.Value)
+                if (affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) && !_configAllowAddingFuel.Value & !_configAllowAddingFuelUseTimer.Value)
                 {
-                    __result = Localization.instance.Localize(___m_name + "\n[<color=yellow><b>1-8</b></color>] Use Item");
+                    __result = Localization.instance.Localize(___m_name + "\n[<color=yellow><b>1-7</b></color>] Use Item");
                 }
+                
             }
         }
 
@@ -121,7 +128,7 @@ namespace TimedTorches
         {
             static bool Prefix(Fireplace __instance, ref bool __result)
             {
-                if(affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) && !_configAllowAddingFuel.Value)
+                if(affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) && !_configAllowAddingFuel.Value & !_configAllowAddingFuel.Value)
                 {
                     __result = false;
                     return false;
@@ -133,13 +140,13 @@ namespace TimedTorches
         [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.IsBurning))]
         class FireplaceIsBurning_Patch
         {
-            static void Postfix(Fireplace __instance, ref bool __result, ref GameObject ___m_enabledObject)
+            static void Postfix(Fireplace __instance, ref bool __result, ref GameObject ___m_enabledObject, ref ZNetView ___m_nview)
             {
                 if(affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)))
                 {
                     // Should never burn if under water
                     //commenented out to fix for Valheim Frost Caves
-                    // TastyChickenLegs 03/12/2022
+                    // TastyChickenLegs 03/12/2022 v.0.6.1
 
                     //float waterLevel = WaterVolume.GetWaterLevel(___m_enabledObject.transform.position);
                     //if(___m_enabledObject.transform.position.y < waterLevel)
@@ -147,36 +154,61 @@ namespace TimedTorches
                     //    return;
                     //}
 
+
+                        //if torch is out of fuel and the configAllowAddingFuelUsetimer is true in the config the torches will turn off. - 0.6.2.0 TCL
+
+                        if ((int)Math.Ceiling(__instance.GetComponent<ZNetView>().GetZDO().GetFloat("fuel")) == 0 && _configAllowAddingFuelUseTimer.Value)
+
+                        {
+                        __result = false;
+                        return;
+                        }
+                        //if torch is out of fuel and the configAllowAddingFuel is true the torch turns off - 0.6.2.0 TCL
+
+                        if ((int)Math.Ceiling(__instance.GetComponent<ZNetView>().GetZDO().GetFloat("fuel")) == 0 && _configAllowAddingFuelUseTimer.Value)
+
+                        {
+                        __result = false;
+                        return;
+                        }
+
                     // Calculate if the torch should currently be lit
                     bool shouldBeLit = false;
-                    float dayFraction = (float)typeof(EnvMan).GetField("m_smoothDayFraction", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(EnvMan.instance);
-                    if(_configOffTime.Value == _configOnTime.Value)
-                    {
-                        shouldBeLit = true;
-                    }
-                    else if(_configOffTime.Value < _configOnTime.Value)
-                    {
-                        if((dayFraction >= _configOnTime.Value && dayFraction <= 1f) || dayFraction <= _configOffTime.Value)
+                        float dayFraction = (float)typeof(EnvMan).GetField("m_smoothDayFraction", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(EnvMan.instance);
+                        if (_configOffTime.Value == _configOnTime.Value)
                         {
                             shouldBeLit = true;
                         }
-                    }
-                    else if(dayFraction >= _configOnTime.Value && dayFraction <= _configOffTime.Value)
-                    {
-                        shouldBeLit = true;
-                    }
+                        else if (_configOffTime.Value < _configOnTime.Value)
+                        {
+                            if ((dayFraction >= _configOnTime.Value && dayFraction <= 1f) || dayFraction <= _configOffTime.Value)
+                            {
+                                shouldBeLit = true;
+                            }
+                        }
+                        else if (dayFraction >= _configOnTime.Value && dayFraction <= _configOffTime.Value)
+                        {
+                            shouldBeLit = true;
+                        }
 
-                    EnvSetup currentEnvironment = EnvMan.instance.GetCurrentEnvironment();
-                    bool isAlwaysDarkBiome = currentEnvironment != null && currentEnvironment.m_alwaysDark;
+                        EnvSetup currentEnvironment = EnvMan.instance.GetCurrentEnvironment();
+                        bool isAlwaysDarkBiome = currentEnvironment != null && currentEnvironment.m_alwaysDark;
 
-                    if(shouldBeLit || (isAlwaysDarkBiome && _configAlwaysOnInDarkBiomes.Value))
-                    {
-                        __result = true;
-                    }
-                    else if(!_configAllowAddingFuel.Value)
-                    {
-                        __result = false;
-                    }
+                        if (shouldBeLit || (isAlwaysDarkBiome && _configAlwaysOnInDarkBiomes.Value))
+                        {
+                            __result = true;
+                        }
+                        else if (!_configAllowAddingFuel.Value)
+                        {
+                            __result = false;
+                        }
+                        //Added to check if AllowAddingFuelUseTimer config option is true.   Turn off torches V0.6.2.0 TCL
+                        else if (_configAllowAddingFuelUseTimer.Value)
+                        {
+                            __result = false;
+                        }
+                    
+
                 }
 			}
 		}
