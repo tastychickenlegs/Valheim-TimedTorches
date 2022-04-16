@@ -28,6 +28,7 @@ namespace TimedTorches
         private static ConfigEntry<bool> _configAllowAddingFuelUseTimer;
         private static ConfigEntry<float> _configFuelDurationMultiplier;
         private static ConfigEntry<string> _configFuelDurationSources;
+        private static ConfigEntry<string> _configNeverNeedFuelNeverTurnOff;
 
         private static string[] affectedSources = new string[]
         {
@@ -51,6 +52,10 @@ namespace TimedTorches
             "piece_brazierfloor01",
         };
 
+        private static string[] neverneedfuelneverturnoff = new string[]
+        {
+        };
+
         void Awake()
         {
             _configEnabled = Config.Bind<bool>("General", "Mod Enabled", defaultValue: true, "Sets the mod to be enabled or not.");
@@ -63,14 +68,14 @@ namespace TimedTorches
                 _configOffTime = Config.Bind<float>("General", "OffTime", 0.27f, "Time of day when torches should turn OFF. 0.27f = 6.30am (0f and 1f is midnight, 0.5f is noon. If onTime == offTime affected fireplaces will burn 24/7)");
                 _configAlwaysOnInDarkBiomes = Config.Bind<bool>("General", "AlwaysOnInDarkBiomes", defaultValue: true, "If true, torches will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm");
                 _configAffectedSources = Config.Bind<string>("General", "AffectedFireplaceSources", string.Join(",", affectedSources), "List of 'Fireplace' sources to be affected by the mod, including objects such as campfires and torches.");
-
-                _configAllowAddingFuel = Config.Bind<bool>("Fuel", "AllowAddingFuelNoTimer", defaultValue: false, "If true, will simply keep the configured sources on all the time and require fuel.  Can use FuelDurationSources to extend fuel duration)");
+                _configNeverNeedFuelNeverTurnOff = Config.Bind<string>("General", "NeverNeedFuelNeverTurnOff", string.Join(",", neverneedfuelneverturnoff), "List of items that never turn off and never need fuel.  Example: piece_walltorch");
+                _configAllowAddingFuel = Config.Bind<bool>("Fuel", "AllowAddingFuelNoTimer", defaultValue: false, "If true, will simply keep the configured fuel duration sources on all the time and require fuel.  Can use FuelDurationSources to extend fuel duration)");
                 //Added AllowAddingFuelUseTimer to the config V.0.6.2.0 TCL
                 _configAllowAddingFuelUseTimer = Config.Bind<bool>("Fuel", "AllowAddingFuelUseTimer", defaultValue: true, "If True, torches will allow adding fuel and use the timer settings.  Fuel can be extended using FuelDurationSources");
                 _configFuelDurationMultiplier = Config.Bind<float>("Fuel", "FuelDurationMultiplier", 1f, "Multiplies the duration of each fuel added to objects listed in the 'FuelDurationSources'. A value of 2 would mean each added fuel burns twice as long)");
                 _configFuelDurationSources = Config.Bind<string>("Fuel", "FuelDurationSources", string.Join(",", fuelDurationSources), "List of 'Fireplace' sources to be affected by the 'FuelDurationMultiplier'.");
-                
-                
+
+                neverneedfuelneverturnoff = _configNeverNeedFuelNeverTurnOff.Value.Split(',');
                 affectedSources = _configAffectedSources.Value.Split(',');
                 fuelDurationSources = _configFuelDurationSources.Value.Split(',');
 
@@ -155,7 +160,14 @@ namespace TimedTorches
                     //}
 
 
-                        //if torch is out of fuel and the configAllowAddingFuelUsetimer is true in the config the torches will turn off. - 0.6.2.0 TCL
+                    //v.0.6.3 keep configured torches on all the time and use no fuel - TCL
+                        if(neverneedfuelneverturnoff.Contains(Utils.GetPrefabName(__instance.gameObject)))
+                        {
+                        __result = true;
+                        return;
+                        }
+
+                    //if torch is out of fuel and the configAllowAddingFuelUsetimer is true in the config the torches will turn off. - 0.6.2.0 TCL
 
                         if ((int)Math.Ceiling(__instance.GetComponent<ZNetView>().GetZDO().GetFloat("fuel")) == 0 && _configAllowAddingFuelUseTimer.Value)
 

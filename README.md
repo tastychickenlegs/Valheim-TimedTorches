@@ -3,10 +3,7 @@ Original Mod by Gurrlin and found here [TimedTorches Original](https://www.nexus
 I received Permission from Gurrlin to fix, modify and repost this mod
 
 ## Fixed for Valheim Frost Cave Update
-Original Mod by Gurrlin all credit goes back to them for creating the mod
-
 This has been fixed for the Valheim Frost Cave Update  
-### This is not my mod and all credit goes back to the original author Gurrlin
 I will do my best to answer questions and fix issues.
 Client side only mode.
 
@@ -23,14 +20,32 @@ and then turn off when it rises in the morning without constantly having to refi
 
 ### Configuration
 
-<b>If you leave the settings alone, torches will turn on at 6:30am and turn off at 4:30pm and require NO fuel.</b>
+<b>If you leave the settings alone, torches will turn off at 6:30am and turn on at 4:30pm and require NO fuel.</b>
 
+As always feature creep has come calling and I thought it best to reorganize the configuration
+
+The config file is located in "<GameDirectory>\Bepinex\config" (You need to start the game at least once, with the mod installed to create the config file).
+
+<b>To view or add items this mod affects:  </b>
+
+- AffectedFireplaceSources - List of objects to be affected by the mod (see below for list of supported objects). By default vanilla torches are added.
+
+<b>To keep torches on the all the time (not use the timer) and never require any fuel (this overrides all other settings)</b>
+
+- NeverNeedFuelNeverTurnOff - never turns off and never needs fuel - by default this is blank. Example would be "piece_groundtorch" with multiple items seperated by a comma
+
+<b>To configure the timer:</b>
+ 
 - OnTime - Time of day when torches should turn ON. (The default is set to 4.30pm in-game time)
 - OffTime - Time of day when torches should turn OFF. (The default is set to 6.30am in-game time)
+
 - AlwaysOnInDarkBiomes - (Default True) If true, objects listed in AffectedFireplaceSources will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm.
-- AffectedFireplaceSources - List of objects to be affected by the mod (see below for list of supported objects). By default only torches are added.
-- AllowAddingFuelNoTimer - (Default False) If true, fuel can be added but not use timers. (Basically vanilla torches) but with the ability to use fuelDurationMultiplier to extend the fuel burning time.
+
+<b>To configure the ability to add fuel and the duration it burns, use the settings below.</b>
+
 - AllowAddingFuelUseTimer - (Default False) If true, fuel can be added and sources will use the timer settings.  If false no fuel is needed to burn torches
+- AllowAddingFuelNoTimer - (Default False) If true, fuel can be added but not use timers. (Basically vanilla torches) but with the ability to use fuelDurationMultiplier to extend the fuel burning time.
+
 - FuelDurationMultiplier - Multiplies the duration of each fuel added to objects listed in the FuelDurationSources.
 - FuelDurationSources - Items configured to use the FuelDurationMultiplier settings.
  
@@ -81,6 +96,10 @@ Start the game.
 In the planning stages: 
 
 - Ability to have all torches to include moded assets on timers without having to add item_ids to the config file.
+
+0.6.3
+
+- Add ability to burn configured torches all the time with no need for fuel.  Some torches can use the timers and others can stay on all the time yet require no fuel.
 
 0.6.2
 
