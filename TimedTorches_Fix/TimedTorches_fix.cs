@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TimedTorches
 {
-    [BepInPlugin("tastychickenlegs.TimedTorches_Fixed", "Timed Torches Fixed", "0.6.2")]
+    [BepInPlugin("tastychickenlegs.TimedTorches_Fixed", "Timed Torches Fixed", "0.6.3")]
     [BepInProcess("valheim.exe")]
     public class ValheimMod : BaseUnityPlugin
     {
@@ -68,7 +68,7 @@ namespace TimedTorches
                 _configOffTime = Config.Bind<float>("General", "OffTime", 0.27f, "Time of day when torches should turn OFF. 0.27f = 6.30am (0f and 1f is midnight, 0.5f is noon. If onTime == offTime affected fireplaces will burn 24/7)");
                 _configAlwaysOnInDarkBiomes = Config.Bind<bool>("General", "AlwaysOnInDarkBiomes", defaultValue: true, "If true, torches will always burn in areas that Valheim considers 'always dark'. E.g Mistlands or any biome during a storm");
                 _configAffectedSources = Config.Bind<string>("General", "AffectedFireplaceSources", string.Join(",", affectedSources), "List of 'Fireplace' sources to be affected by the mod, including objects such as campfires and torches.");
-                _configNeverNeedFuelNeverTurnOff = Config.Bind<string>("General", "NeverNeedFuelNeverTurnOff", string.Join(",", neverneedfuelneverturnoff), "List of items that never turn off and never need fuel.  Example: piece_walltorch");
+                _configNeverNeedFuelNeverTurnOff = Config.Bind<string>("General", "NeverNeedFuelNeverTurnOff", string.Join(",", neverneedfuelneverturnoff), "List of items that never turn off and never need fuel.  Bypasses all other settings.  Example: piece_walltorch");
                 _configAllowAddingFuel = Config.Bind<bool>("Fuel", "AllowAddingFuelNoTimer", defaultValue: false, "If true, will simply keep the configured fuel duration sources on all the time and require fuel.  Can use FuelDurationSources to extend fuel duration)");
                 //Added AllowAddingFuelUseTimer to the config V.0.6.2.0 TCL
                 _configAllowAddingFuelUseTimer = Config.Bind<bool>("Fuel", "AllowAddingFuelUseTimer", defaultValue: true, "If True, torches will allow adding fuel and use the timer settings.  Fuel can be extended using FuelDurationSources");

@@ -73,7 +73,7 @@ piece_brazierfloor01 - (New with Frost Caves)
 
 How to find the perfect timer settings for your needs  
 
-The default values are set to work for out base that doesn't get really early sun and not the last rays of the sunset. However, if your base is in a different location you might want to tweak the on and off times.
+The default values are set to work for my base that doesn't get really early sun and not the last rays of the sunset. However, if your base is in a different location you might want to tweak the on and off times.
 This is how you go about finding a timing that's right for you!  
 
 Enable the console following the instructions here.﻿  
@@ -92,10 +92,6 @@ Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"
 Start the game.
 
 ### Version Information
-
-In the planning stages: 
-
-- Ability to have all torches to include moded assets on timers without having to add item_ids to the config file.
 
 0.6.3
 
