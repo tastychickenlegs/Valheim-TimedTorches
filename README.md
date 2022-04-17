@@ -22,7 +22,7 @@ and then turn off when it rises in the morning without constantly having to refi
 
 <b>If you leave the settings alone, torches will turn off at 6:30am and turn on at 4:30pm and require NO fuel.</b>
 
-As always feature creep has come calling and I thought it best to reorganize the configuration
+As always "feature creep" has come calling and I thought it best to reorganize the configuration
 
 The config file is located in "<GameDirectory>\Bepinex\config" (You need to start the game at least once, with the mod installed to create the config file).
 
@@ -67,7 +67,7 @@ fire_pit
 piece_jackoturnip  
 piece_brazierfloor01 - (New with Frost Caves)
 
-- You should be able to add custom items to this mod in the config.  I have not tested it, but see no reason why it wouldnt work.
+- Custom modded items can be added as well.  Example rk_campfire for the smokeless campfire in the Bon Appetit mod.
 
 ### Other
 
@@ -95,7 +95,7 @@ Start the game.
 
 0.6.3
 
-- Add ability to burn configured torches all the time with no need for fuel.  Some torches can use the timers and others can stay on all the time yet require no fuel.
+- Add ability to burn configured torches (campfires, hearth..etc) all the time with no need for fuel.  Some torches can use the timers and others can stay on all the time yet require no fuel. This overrides the timer settings.
 
 0.6.2
 

@@ -87,7 +87,7 @@ namespace TimedTorches
         {
             harmony.UnpatchSelf();
         }
-        //Not needed anymore
+        //Not needed anymore after game update
 
         //[HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Awake))]
         //class FireplaceAwakePre_Patch
@@ -114,30 +114,45 @@ namespace TimedTorches
             }
         }
 
-
+        //checks to see if items use fuel and configures the interface accordingly
         [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.GetHoverText))]
         class FireplaceGetHoverText_Patch
         {
             static void Postfix(Fireplace __instance, ref string __result, ref ZNetView ___m_nview, ref string ___m_name)
             {
-                if (affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) && !_configAllowAddingFuel.Value & !_configAllowAddingFuelUseTimer.Value)
+                if (affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) && 
+                    !_configAllowAddingFuel.Value &
+                    !_configAllowAddingFuelUseTimer.Value)
+
                 {
-                    __result = Localization.instance.Localize(___m_name + "\n[<color=yellow><b>1-7</b></color>] Use Item");
+                    __result = Localization.instance.Localize(___m_name + "\n <color=yellow>No Fuel Required</color>" + "\n[<color=yellow><b>1-8</b></color>] Use Item");
                 }
-                
+                if (neverneedfuelneverturnoff.Contains(Utils.GetPrefabName(__instance.gameObject)))
+
+                {
+                    __result = Localization.instance.Localize(___m_name + "\n <color=yellow>No Fuel Required</color>" + "\n[<color=yellow><b>1-8</b></color>] Use Item");
+                }
             }
         }
-
+        //if allow adding fuel show the interface with fuel left
         [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Interact))]
         class FireplaceInteract_Patch
         {
             static bool Prefix(Fireplace __instance, ref bool __result)
             {
-                if(affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) && !_configAllowAddingFuel.Value & !_configAllowAddingFuel.Value)
+                if (affectedSources.Contains(Utils.GetPrefabName(__instance.gameObject)) &&
+                    !_configAllowAddingFuel.Value &
+                    !_configAllowAddingFuelUseTimer.Value)
                 {
                     __result = false;
-                    return false;
                 }
+                
+                if (neverneedfuelneverturnoff.Contains(Utils.GetPrefabName(__instance.gameObject)))
+                    
+                { 
+                    __result = false;
+                }
+
                 return true;
             }
         }
@@ -177,7 +192,7 @@ namespace TimedTorches
                         }
                         //if torch is out of fuel and the configAllowAddingFuel is true the torch turns off - 0.6.2.0 TCL
 
-                        if ((int)Math.Ceiling(__instance.GetComponent<ZNetView>().GetZDO().GetFloat("fuel")) == 0 && _configAllowAddingFuelUseTimer.Value)
+                        if ((int)Math.Ceiling(__instance.GetComponent<ZNetView>().GetZDO().GetFloat("fuel")) == 0 && _configAllowAddingFuel.Value)
 
                         {
                         __result = false;
