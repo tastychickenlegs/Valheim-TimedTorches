@@ -92,6 +92,9 @@ Extract DLL from zip file into "<GameDirectory>\Bepinex\plugins"
 Start the game.
 
 ### Version Information
+0.6.4 
+
+- Compiled to the newest version of Valheim 0.2.09.10 
 
 0.6.3
 
